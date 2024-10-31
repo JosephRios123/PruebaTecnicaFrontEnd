@@ -15,8 +15,8 @@ Antes de comenzar, asegúrate de tener instalados los siguientes elementos en tu
 
 - [Node.js](https://nodejs.org/) (versión 14 o superior)
 - [npm](https://www.npmjs.com/) (normalmente se instala junto con Node.js)
-<!-- Para mejor entendimiento de la instalación de cada programa, 
-recomiendo ver un video en YouTube -->
+Para mejor entendimiento de la instalación de cada programa, 
+recomiendo ver un video en YouTube
 
 ## Clonar el Repositorio
 
