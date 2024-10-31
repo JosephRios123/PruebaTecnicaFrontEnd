@@ -1,3 +1,10 @@
+# Antes de iniciar tenga en cuenta que...
+
+Si por alguna razón no le funciona el proyecto al ejecutar la parte backend y frontend,
+le recomiendo desabilitar el antivirus que haya en su pc solo por el momento que vaya a usar la app.
+
+Al finalizar puede volver a activar su antivirus.
+
 # Proyecto - FrontEnd
 
 Este proyecto es una aplicación de búsqueda de vuelos desarrollada con Laravel para el backend y React para el frontend. A continuación, se presentan las instrucciones paso a paso para ejecutar el proyecto.

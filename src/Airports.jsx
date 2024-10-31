@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import './App.css';
 
 function Airports() {
@@ -6,7 +6,7 @@ function Airports() {
     const [code, setCode] = useState(""); // Estado para almacenar el código de la ciudad
     const [error, setError] = useState(null); // Estado para manejar errores
     const [currentPage, setCurrentPage] = useState(1); // Estado para la página actual
-    const [itemsPerPage, setItemsPerPage] = useState(5); // Número de aeropuertos por página
+    const [itemsPerPage] = useState(5); // Número de aeropuertos por página
     const [filter, setFilter] = useState(""); // Estado para el filtro
 
     const fetchAirports = () => {
@@ -60,7 +60,7 @@ function Airports() {
                     type="text" 
                     value={code} 
                     onChange={(e) => setCode(e.target.value)} // Actualizar el estado con el valor del input
-                    placeholder="Ingresa el código de la ciudad" 
+                    placeholder="Ingresa el nombre de la ciudad" 
                     style={{
                         padding: '12px 15px', // Mayor padding para comodidad
                         marginRight: '10px',
@@ -144,25 +144,59 @@ function Airports() {
                 )}
             </div>
             {/* Paginación */}
-            <div style={{ display: 'flex', justifyContent: 'center', marginTop: '20px' }}>
-                {[...Array(Math.ceil(data.length / itemsPerPage)).keys()].map(number => (
-                    <button 
-                        key={number + 1} 
-                        onClick={() => paginate(number + 1)} 
-                        style={{
-                            padding: '10px',
-                            margin: '0 5px',
-                            border: 'none',
-                            borderRadius: '5px',
-                            backgroundColor: currentPage === number + 1 ? '#646CFF' : '#444', // Color activo
-                            color: '#fff',
-                            cursor: 'pointer',
-                        }}
-                    >
-                        {number + 1}
-                    </button>
-                ))}
+            <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', marginTop: '20px' }}>
+                <button 
+                    onClick={() => paginate(1)} 
+                    disabled={currentPage === 1} 
+                    style={{ margin: '0 5px', padding: '10px', cursor: currentPage === 1 ? 'not-allowed' : 'pointer' }}>
+                    {'<<'} {/* Flecha a la primera página */}
+                </button>
+                <button 
+                    onClick={() => paginate(currentPage - 1)} 
+                    disabled={currentPage === 1} 
+                    style={{ margin: '0 5px', padding: '10px', cursor: currentPage === 1 ? 'not-allowed' : 'pointer' }}>
+                    {'<'} {/* Flecha hacia la página anterior */}
+                </button>
+
+                {/* Calcula el rango de páginas a mostrar */}
+                {(() => {
+                    const totalPages = Math.ceil(data.length / itemsPerPage);
+                    const startPage = Math.max(1, currentPage - 2); // Empieza 2 páginas antes de la actual
+                    const endPage = Math.min(totalPages, startPage + 4); // Muestra un máximo de 5 páginas
+
+                    return [...Array(endPage - startPage + 1).keys()].map(index => (
+                        <button 
+                            key={startPage + index} 
+                            onClick={() => paginate(startPage + index)} 
+                            style={{
+                                padding: '10px',
+                                margin: '0 5px',
+                                border: 'none',
+                                borderRadius: '5px',
+                                backgroundColor: currentPage === startPage + index ? '#646CFF' : '#444', // Color activo
+                                color: '#fff',
+                                cursor: 'pointer',
+                            }}
+                        >
+                            {startPage + index}
+                        </button>
+                    ));
+                })()}
+
+                <button 
+                    onClick={() => paginate(currentPage + 1)} 
+                    disabled={currentPage === Math.ceil(data.length / itemsPerPage)} 
+                    style={{ margin: '0 5px', padding: '10px', cursor: currentPage === Math.ceil(data.length / itemsPerPage) ? 'not-allowed' : 'pointer' }}>
+                    {'>'} {/* Flecha hacia la página siguiente */}
+                </button>
+                <button 
+                    onClick={() => paginate(Math.ceil(data.length / itemsPerPage))} 
+                    disabled={currentPage === Math.ceil(data.length / itemsPerPage)} 
+                    style={{ margin: '0 5px', padding: '10px', cursor: currentPage === Math.ceil(data.length / itemsPerPage) ? 'not-allowed' : 'pointer' }}>
+                    {'>>'} {/* Flecha a la última página */}
+                </button>
             </div>
+
         </div>
     );
 }

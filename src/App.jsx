@@ -3,8 +3,8 @@ import { Routes, Route, Link } from 'react-router-dom';
 import './App.css';
 import Airports from './Airports';
 import Flights from './Flights';
-import Reserve from './Reserve';
 import ObtenerReservas from './ObtenerReservas';
+
 
 function App() {
     const [hoveredButtonIndex, setHoveredButtonIndex] = useState(null); // Cambiar a índice de botón
@@ -36,7 +36,7 @@ function App() {
             }}>
                 <nav>
                     <ul style={{ listStyleType: 'none', padding: '0' }}>
-                        {['/airports', '/flights', '/reserve', '/obtenerReservas'].map((path, index) => (
+                        {['/airports', '/flights', '/obtenerReservas'].map((path, index) => (
                             <li key={index} style={{ marginBottom: '20px' }}>
                                 <Link
                                     to={path}
@@ -49,7 +49,6 @@ function App() {
                                 >
                                     {path === '/airports' && 'Obtener Aeropuertos'}
                                     {path === '/flights' && 'Obtener Vuelos'}
-                                    {path === '/reserve' && 'Guardar una Reserva'}
                                     {path === '/obtenerReservas' && 'Ver Reservas'}
                                 </Link>
                             </li>
@@ -60,7 +59,6 @@ function App() {
             <Routes>
                 <Route path="/airports" element={<Airports />} />
                 <Route path="/flights" element={<Flights />} />
-                <Route path="/reserve" element={<Reserve />} />
                 <Route path="/obtenerReservas" element={<ObtenerReservas />} />
                 {/* Otras rutas comentadas */}
             </Routes>

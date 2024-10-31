@@ -1,0 +1,94 @@
+.modal {
+    display: none; /* Ocultar por defecto */
+    position: fixed; /* Fijar en la pantalla */
+    z-index: 1000; /* Asegurar que esté sobre otros elementos */
+    left: 0;
+    top: 0;
+    width: 100%; /* Ancho completo */
+    height: 100%; /* Alto completo */
+    overflow: auto; /* Habilitar desplazamiento si es necesario */
+    background-color: rgba(0, 0, 0, 0.5); /* Fondo oscuro semitransparente */
+}
+
+.modal.is-active {
+    display: block; /* Mostrar el modal cuando está activo */
+}
+
+.modal-content {
+    background-color: white; /* Fondo blanco para el contenido */
+    margin: 15% auto; /* Centrar el modal */
+    padding: 20px; /* Espaciado interno */
+    border: 1px solid #888; /* Borde */
+    width: 80%; /* Ancho del modal */
+    max-width: 600px; /* Ancho máximo */
+    color: black;
+}
+
+.modal-header {
+    align-items: center; /* Centrar verticalmente */
+}
+
+.modal-footer {
+    display: flex;
+    justify-content: space-between; /* Espaciar pie de página */
+    margin-top: 20px; /* Margen superior */
+}
+
+.modal-button {
+    background-color: #007BFF; /* Color del botón */
+    color: white; /* Color del texto */
+    border: none; /* Sin borde */
+    padding: 10px 20px; /* Espaciado interno */
+    cursor: pointer; /* Cambiar cursor al pasar el mouse */
+}
+
+.modal-button:hover {
+    background-color: #0056b3; /* Color de fondo al pasar el mouse */
+}
+
+.modal-close {
+    cursor: pointer; /* Cambiar cursor al pasar el mouse */
+}
+
+.passenger-controls {
+    display: flex;
+    flex-direction: column; /* Colocar los grupos de pasajeros en una columna */
+    gap: 20px; /* Espaciado entre grupos */
+    margin-top: 15px; /* Margen superior */
+}
+
+.passenger-group {
+    display: flex;
+    align-items: center; /* Centrar verticalmente los elementos */
+    justify-content: space-between; /* Espaciar elementos */
+    padding: 10px; /* Espaciado interno */
+    border: 1px solid #ddd; /* Borde suave */
+    border-radius: 5px; /* Bordes redondeados */
+    background-color: #f9f9f9; /* Fondo suave */
+}
+
+.passenger-group label {
+    flex: 1; /* Permitir que el label ocupe espacio */
+    margin-right: 10px; /* Espacio entre el label y los botones */
+    font-weight: bold; /* Negrita para los labels */
+}
+
+.passenger-group button {
+    background-color: #007BFF; /* Color del botón */
+    color: white; /* Color del texto */
+    border: none; /* Sin borde */
+    border-radius: 5px; /* Bordes redondeados */
+    padding: 5px 10px; /* Espaciado interno */
+    cursor: pointer; /* Cambiar cursor al pasar el mouse */
+    transition: background-color 0.3s; /* Efecto de transición */
+}
+
+.passenger-group button:hover {
+    background-color: #0056b3; /* Color de fondo al pasar el mouse */
+}
+
+.passenger-group button:disabled {
+    background-color: #ccc; /* Color para botones deshabilitados */
+    cursor: not-allowed; /* Cambiar cursor para botones deshabilitados */
+}
+
